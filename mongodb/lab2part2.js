@@ -10,21 +10,21 @@ db.books.aggregate([
 
   { $match: { publishedDate: { $gte: ISODate("2002-01-01T00:00:00Z") }}},
 
-  { $unwind: "$categories" }, // Splitting categories array into separate documents
+  { $unwind: "$categories" },  
 
   { 
 
     $group: { 
 
-      _id: "$categories", // Grouping by categories
+      _id: "$categories",  
 
-      count: { $sum: 1 } // Counting documents in each group
+      count: { $sum: 1 }  
 
     } 
 
   },
 
-  { $sort: { count: -1 } } // Sorting by count in descending order
+  { $sort: { count: -1 } }  
 
 ])
 
@@ -38,7 +38,7 @@ db.books.aggregate([
 
   {
 
-    // Unwind the categories array
+    
 
     $unwind: "$categories"
 
@@ -46,7 +46,7 @@ db.books.aggregate([
 
   {
 
-    // Project the desired fields
+    
 
     $project: {
 
@@ -70,7 +70,7 @@ db.books.aggregate([
 
   {
 
-    // Add fields using $addFields
+ 
 
     $addFields: {
 
